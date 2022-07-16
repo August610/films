@@ -3,7 +3,7 @@ import React from "react";
 class Search extends React.Component {
   state = {
     search: "",
-    type: "all"
+    type: "all",
   };
 
   handleKey = (event) => {
@@ -13,9 +13,12 @@ class Search extends React.Component {
   };
 
   handleFilter = (event) => {
-    this.setState(() => ({ type: event.target.dataset.type }), () => {
+    this.setState(
+      () => ({ type: event.target.dataset.type }),
+      () => {
         this.props.searchMovies(this.state.search, this.state.type);
-    });
+      }
+    );
   };
 
   render() {
@@ -68,7 +71,9 @@ class Search extends React.Component {
 
           <button
             className="btn search-btn"
-            onClick={() => this.props.searchMovies(this.state.search, this.state.type)}
+            onClick={() =>
+              this.props.searchMovies(this.state.search, this.state.type)
+            }
           >
             Search
           </button>
